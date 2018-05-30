@@ -1,0 +1,19 @@
+h1 {
+    font-family: 'Sue Ellen Francisco', cursive;
+
+    text-shadow: 4px 5px white;
+    color: yellow;
+    font-size: 2000%;
+    margin-top: 30px;
+}
+
+.text {
+    font-family: 'Share Tech Mono', monospace;
+    color: #DF9826;
+    margin: 50px;
+    font-size: 50px;
+}
+
+.background {
+    background-image: url(../images/Fantasy-Night-Moon-4K-Full-HD-Wallpapers-Photos-Pics-Images-Startwallpapers.com4697.jpg);
+}
