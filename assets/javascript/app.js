@@ -2,8 +2,8 @@ var correct = 0;
 var incorrect = 0;
 var unAnwered = 0;
 var counter;
-var time = 5;
-var congarts = ("Congragulations!!!")
+var time = 15;
+var congarts = ("Congratulations you got the right answer!!!")
 var index = 0;
 
 var sifyQuestion = [{
@@ -11,11 +11,11 @@ var sifyQuestion = [{
         choices: ["Picard", "Kirk", "Hook", "Jack"],
         validAnswer: 0
     }, {
-        question: "With disney scifi movie is not well know?",
+        question: "Witch disney scifi movie is not well know?",
         choices: ["Tron", "The Black Hole", "Tomorrowland", "Right Hand"],
         validAnswer: 1
     }, {
-        question: "Witch is a a sify tv show with 1 season?",
+        question: "Witch is sify tv show with 1 season?",
         choices: ["X-files", "The Black Hole", "Fierfly", "Stargate SG-1"],
         validAnswer: 3
     }, {
@@ -42,33 +42,25 @@ var sifyQuestion = [{
 
 ];
 
-function timer(time) {
-    counter = setTimeout(function (){
-        console.log(time);
-
-        time--;
-
-        if(time > 0){
-            timer(time);
-        }else{
-            console.log("next question")
-
-            index++
-
-            buildQuestionsDiv(sifyQuestion, index);
-            timer(5);
-        }
-
-        
-    }, 1000);
-}
-
+// function timer(time) {
+//     counter = setTimeout(function (){
+//         console.log(time);
+//         time--;
+//         if(time > 0){
+//             timer(time);
+//         }else{
+//             console.log("next question");
+//             index++;
+//             buildQuestionsDiv(sifyQuestion, index);
+//             timer(15);
+//         };
+//     }, 1000);
+// }
 function answerGongrats(message) {
     setTimeout(function () {
-        console.log(message)
-    },5000)
-
-    
+        console.log(congarts)
+        
+    },5000);  
 }
 
 function buildQuestionsDiv(array, index) {
@@ -76,14 +68,24 @@ function buildQuestionsDiv(array, index) {
     var qustionDiv = $("<div>");
     // setup div to display
     qustionDiv.text(
-            array[index].question
+        array[index].question
     )
     $("#question").append(qustionDiv)
+
+};
+function buildCongratulationsDiv(message) {
+    $("#question").empty();
+    var congratulationsDiv = $("<div>");
+    // setup div to display
+    congratulationsDiv.text (
+        "Congratulations you got the right answer!!!"
+    )
+    $("#question").append(congratulationsDiv)
     
 };
 
-answerGongrats(sifyQuestion[0].choices[sifyQuestion[0].validAnswer]);
- timer(5)
+
+//  timer(5)
 function nextQuestion(){
 
 }
