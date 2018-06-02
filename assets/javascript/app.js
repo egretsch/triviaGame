@@ -1,11 +1,10 @@
 var correct = 0;
 var incorrect = 0;
-var unAnwered = 0;
 var counter;
 var time = 15;
 var congarts = ("Congratulations you got the right answer!!!")
 var index = 0;
-
+var userSelect;
 var sifyQuestion = [{
         question: "Witch on is the Captin from star trek the next generation?",
         choices: ["Picard", "Kirk", "Hook", "Jack"],
@@ -39,39 +38,58 @@ var sifyQuestion = [{
         choices: ["Gundem Wing", "Rusty The Boy Robot", "Gigantor", "Voltron"],
         validAnswer: 1
     },  
-
 ];
-
-// function timer(time) {
-//     counter = setTimeout(function (){
+function timer(time) {
+    counter = setTimeout(function (){
+        console.log(time);
+        $("#timer").text(time);
+        time--;
+        if(time > 0){
+            timer(time);
+        }else{
+            console.log("next question");
+            buildQuestionsDiv(sifyQuestion, index);
+            index++;
+            timer(15);
+        };
+    }, 1000);
+}
+// function timerCongratulations(time) {
+//     counter = setTimeout(function () {
 //         console.log(time);
+//         $("#timer").text(time);
 //         time--;
-//         if(time > 0){
+//         if (time > 0) {
 //             timer(time);
-//         }else{
+//         } else {
 //             console.log("next question");
-//             index++;
-//             buildQuestionsDiv(sifyQuestion, index);
-//             timer(15);
+//             buildCongratulationsDiv(message);
+//             timer(5);
 //         };
 //     }, 1000);
 // }
-function answerGongrats(message) {
-    setTimeout(function () {
-        console.log(congarts)
-        
-    },5000);  
-}
-
+// function answerGongrats(message) {
+//     setTimeout(function () {
+//         console.log(congarts)     
+//     },5000);  
+// }
 function buildQuestionsDiv(array, index) {
     $("#question").empty();
     var qustionDiv = $("<div>");
+    var answersDiv = $("<div>");
     // setup div to display
     qustionDiv.text(
         array[index].question
     )
+    answersDiv.text(
+        array[index].choices
+    )
+    // answersDiv.attr(
+    //     'data-index': index
+    // )
     $("#question").append(qustionDiv)
-
+    $("#question").append(answersDiv)
+    
 };
 function buildCongratulationsDiv(message) {
     $("#question").empty();
@@ -80,16 +98,20 @@ function buildCongratulationsDiv(message) {
     congratulationsDiv.text (
         "Congratulations you got the right answer!!!"
     )
-    $("#question").append(congratulationsDiv)
-    
+    $("#question").append(congratulationsDiv);
 };
-
-
-//  timer(5)
-function nextQuestion(){
-
+function answerPage() {
+    var rightAnswerText = sifyQuestion.answerList[sifyQuestion.validAnswer];
+    var rightAnswerIndex = sifyQuestion.validAnswer;  
+    //checks to see correct, incorrect, or unanswered
+    if ((userSelect == rightAnswerIndex) && (answered == true)) {
+        correct++;
+        buildCongratulationsDiv(message)
+    } else if ((userSelect != rightAnswerIndex) && (answered == true)) {
+        incorrect++;
+        $("#question").empty();
+        $("#question").html('The correct answer was: ' + rightAnswerText);
+    } 
+        setTimeout(timer, 5000);
 }
- function resetGame(params) {
-     
- }
-
+ timer()
