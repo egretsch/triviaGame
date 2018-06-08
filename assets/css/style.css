@@ -17,3 +17,13 @@ h1 {
 .background {
     background-image: url(../images/Fantasy-Night-Moon-4K-Full-HD-Wallpapers-Photos-Pics-Images-Startwallpapers.com4697.jpg);
 }
+
+.restart {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+}
