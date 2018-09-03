@@ -1,7 +1,7 @@
 # triviaGame
 https://egretsch.github.io/triviaGame/
 
-####model
+#### Model
         questions
         timer 
         congradulate forr right answers
@@ -10,7 +10,7 @@ https://egretsch.github.io/triviaGame/
             incorrect answers
         
             
-####view
+#### View
         webpage 
             title
             body
@@ -21,7 +21,7 @@ https://egretsch.github.io/triviaGame/
         
 
 
-####controler
+#### Controler
         when page changes it updates display
         when incorret answer 
             loged
