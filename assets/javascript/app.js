@@ -9,6 +9,8 @@ var timerReady = true;
 
 var CurrentQuestion;
 
+// An array of objects for questions and answers
+
 var syfyQuestion = [
     {
         question: "Which on is the Captain from Star Trek the Next Generation?",
@@ -45,7 +47,7 @@ var syfyQuestion = [
     },  
 ];
 
-// function to control the switching of questions (besides answering)
+// Function to control the switching of questions (besides answering)
 function timer(time, bool) {
     timerReady = false;
     var seconds = time;
@@ -66,10 +68,11 @@ function timer(time, bool) {
     }, 1000)
 };
 
+// Function that builds the object and answers for each question
+
 function buildQuestionsDiv(syfyQuestion, index) {
     $("#question").empty();
     var questionDiv = $("<div>");
-    // var answersDiv = $("<div>");
     questionDiv.text(
         syfyQuestion[index].question
     );
@@ -92,6 +95,8 @@ function buildQuestionsDiv(syfyQuestion, index) {
     }
 };
 
+// Log the index of where the user clicked for the answer
+
 $('#question').on('click', ".thisChoice", function() {
     userSelect = $(this).data('index');
     var questionIndex = $(this).data('question');
@@ -99,6 +104,8 @@ $('#question').on('click', ".thisChoice", function() {
     clearTimeout(counter);
     answerPage(userSelect, questionIndex);
 });
+
+// Congratulates user when they click the right answer
 
 function buildCongratulationsDiv() {
     $("#question").empty();
@@ -109,6 +116,11 @@ function buildCongratulationsDiv() {
     )
     $("#question").append(congratulationsDiv);
 };
+
+// Set up timer to rotate through each question.
+// Adds the correct answers one answers are answered correctly.
+// Adds to incorrect score when questions are answered incorrectly.
+// And rotates through the object.
 
 function answerPage(userSelect, questionIndex) {
         var answered;
@@ -133,13 +145,15 @@ function answerPage(userSelect, questionIndex) {
         }
 };
 
+// Creates a reset button at the end of the quiz as well as refreshes of the page.
+
 function buildRestartButton() {
     var restratButton = $("<button>");
     restratButton.text("Restart");
     restratButton.addClass("restart") 
     $("#restart").append(restratButton);
 }
-
+// Prints all the data points to the page questions answers and all the information based on the users stats during the quiz.
 function scorPage() {
     $("#question").empty();
     $("#correct").text("Correct: "+ correct);
@@ -156,6 +170,8 @@ function scorPage() {
 function gameOver(){
     run();
 }
+
+// Clears all the stats and clears all the data points throughout the trivia app when started and restarted.
 
 function run(){
     correct = 0;
