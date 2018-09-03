@@ -187,4 +187,6 @@ function run(){
     buildQuestionsDiv(syfyQuestion, index)
 }
 
+// Starts app
+
 run();
