@@ -138,7 +138,7 @@ function answerPage(userSelect, questionIndex) {
             $("#question").html('The correct answer was: ' + rightAnswerText);
             answered = true;
         }
-    setTimeout(timer, 5000, 15, true);
+    setTimeout(timer, 5000, true);
     index++;
     if (index === syfyQuestion.length){
             scorPage()
@@ -158,7 +158,6 @@ function scorPage() {
     $("#question").empty();
     $("#correct").text("Correct: "+ correct);
     $("#incorrect").text("Incorrect: " + incorrect);
-    $("#unanswered").text("Unanswered: " + unanswered);
     $("#unanswered").text("Unanswered: " + unanswered);
     buildRestartButton()
     $("#restart").on("click", function () {
